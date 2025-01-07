@@ -8,6 +8,8 @@ import addressRouter from './src/Routes/address.route.js'
 //import paymentRouter from './src/Routes/payment.route.js'
 import cors from 'cors';
 import dotenv from 'dotenv'
+import path from 'path';
+const __dirname = path.resolve();
 
 dotenv.config()
 
@@ -20,6 +22,12 @@ app.use(cors({
   methods:[ "GET","POST","PUT","DELETE"],
   credentials:true
 }))
+
+
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 // home testing route
 app.get('/',(req,res)=>res.json({messge:'This is home route'}))
