@@ -18,7 +18,7 @@ const app = express();
 app.use(bodyParser.json())
 
 app.use(cors({
-  origin:true,
+  origin: ['https://marvelous-kheer-e120c1.netlify.app'], // Update with your Netlify URL,
   methods:[ "GET","POST","PUT","DELETE"],
   credentials:true
 }))
